@@ -29,6 +29,12 @@ class Stock_SangAdmin(admin.ModelAdmin):
         obj.save()
         form.save_m2m()
         return obj
+    
+
+        
+
+
+    
 
 @admin.register(Centre_Collecte)
 class Centre_CollecteAdmin(admin.ModelAdmin):
@@ -52,5 +58,24 @@ class  ReceveurAdmin(admin.ModelAdmin):
 @admin.register(Transfusion)
 class  TransfusionAdmin(admin.ModelAdmin):
  list_display = "receveur","date","quantite","stock" 
+ def save_model(self, request, form, change):
+    
+        obj = form.save(commit=False)
+        if change:
+           messages.error(request, "Modification non autorisée.")
+           return
+        stock = obj.stock
+        try:
+         if stock.quantite >= obj.quantite:
+            stock.quantite -= obj.quantite
+            stock.save()  # Enregistrer la mise à jour de la quantité en stock
+            obj.save()  # Enregistrer l'objet de transfusion
+            form.save_m2m()
+            return obj
+         else:
+            messages.error(request, "Quantité de stock insuffisante.")
+        except Exception as e:
+          messages.error(request, f"Une erreur s'est produite : {str(e)}")
+
  
 

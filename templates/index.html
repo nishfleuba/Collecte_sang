@@ -1,40 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Collecte Sang</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>collecte sang</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}" />
   </head>
   <body>
-    <header>
-      <div class="log">
-        <img src="images/IMG-20240505-WA0024.jpg" alt="" />
-      </div>
-      <nav>
-        <ul>
-          <li>
-            <a href="#">Donneur</a>
-          </li>
-          <li>
-            <button>Log In</button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    {% include 'header.html' %}
     <section class="hero">
       <div class="content">
-        <h3>Collecte <span>de sang </span>au burundi</h3>
+        <h2>JE ME MOBILISE POUR SAUVER DES VIES</h2>
+        <h1>
+          Rechercher une collecte de <span> sang</span> ou un centre de
+          <span> prélèvement</span> fixe
+        </h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-          amet totam laboriosam incidunt est quo officia molestias asperiores
-          ducimus suscipit itaque optio impedit aliquid natus omnis voluptatum,
-          consectetur eaque doloremque.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
+          voluptatem, eos odio asperiores aliquid deserunt eligendi non beatae
+          unde nihil? Provident eos pariatur officiis sapiente modi accusantium
+          vero aut dicta?
         </p>
+        <button>Savoir plus</button>
       </div>
       <div class="img">
-        <img src="images/IMG-20240505-WA0023.jpg" alt="" />
+        <img src="{% static 'images/IMG-20240505-WA0026.jpg'%}" alt="" />
       </div>
     </section>
   </body>

@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donneur</title>
+    <link rel="stylesheet" href="{%static 'style.css'%}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <section class="donneur">
+      <div class="form">
+        <h5>Enregitre un nouveau Donneur</h5>
+        <form action="" method="post">
+          <input type="text" placeholder=" Entre le Nom du Donneur" />
+          <input type="text" placeholder=" Entre le Prenom du Donneur" />
+          <input
+            type="text"
+            placeholder=" Entre la date de naissance du Donneur"
+          />
+          <input
+            type="text"
+            placeholder=" Entre le groupe sanguin du Donneur"
+          />
+          <input
+            type="number"
+            placeholder=" Entre le groupe quantite du Donneur"
+          />
+          <button>Ajouter</button>
+        </form>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+           
+            <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Date Naissance</th>
+              <th>grp Sanguin</th>
+              <th>Adresse</th>
+              <th>Phone</th>
+              <th>actions</th>
+            </tr>
+           
+          </thead>
+          <tbody>
+            {% for donneur in donneurs %}
+            <tr>
+              <td>{{donneur.nom}}</td>
+              <td>{{donneur.prenom}}</td>
+              <td>{{donneur.date_naissance}}</td>
+              <td>{{donneur.groupe_sanguin}}</td>
+              <td>{{donneur.adresse}}</td>
+              <td>{{donneur.tel}}</td>
+              <td>
+                <a href="#">edit</a>
+              </td>
+            </tr>
+            {% endfor %}
+          
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

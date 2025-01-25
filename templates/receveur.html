@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>receveur</title>
+    <link rel="stylesheet" href="{%static 'style.css'%}" />
+  </head>
+  <body>
+    {% include 'header.html' %}
+    <section class="receveur">
+      <div class="form">
+        <h5>Enregitre un nouveau receveur</h5>
+        <form action="" method="post">
+          <input type="text" placeholder=" Entre le Nom du receveur" />
+          <input type="text" placeholder=" Entre le Prenom du receveur" />
+          <input
+            type="text"
+            placeholder=" Entre la date de naissance du receveur"
+          />
+          <input
+            type="text"
+            placeholder=" Entre le groupe sanguin du receveur"
+          />
+          <input
+            type="number"
+            placeholder=" Entre le groupe quantite du receveur"
+          />
+          <button>Ajouter</button>
+        </form>
+      </div>
+      <div class="table">
+        <table>
+          <thead>
+           
+            <tr>
+              <th>Nom</th>
+              <th>Prenom</th>
+              <th>Date Naissance</th>
+              <th>grp Sanguin</th>
+             
+            </tr>
+           
+          </thead>
+          <tbody>
+            {% for receveur in receveurs %}
+            <tr>
+              <td>{{receveur.nom}}</td>
+              <td>{{receveur.prenom}}</td>
+              <td>{{receveur.date_naissance}}</td>
+              <td>{{receveur.groupe_sanguin}}</td>
+            
+              <td>
+                <a href="#">edit</a>
+              </td>
+            </tr>
+            {% endfor %}
+          
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

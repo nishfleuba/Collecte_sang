@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="{%static 'style.css'%}" />
+</head>
+<body>
+    {% include 'header.html'%}
+    <div class="login">
+
+        <form action="" method="post" class="form">
+            {% csrf_token%}
+            {{ connection_form.as_p}}
+            {{erreur}}
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            <button type="submit">log in</button>
+        </form>
+    </div>
+</body>
+</html>
