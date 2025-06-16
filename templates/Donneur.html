@@ -13,22 +13,31 @@
       <div class="form">
         <h5>Enregitre un nouveau Donneur</h5>
         <form action="" method="post">
-          <input type="text" placeholder=" Entre le Nom du Donneur" />
-          <input type="text" placeholder=" Entre le Prenom du Donneur" />
-          <input
-            type="text"
-            placeholder=" Entre la date de naissance du Donneur"
-          />
-          <input
-            type="text"
-            placeholder=" Entre le groupe sanguin du Donneur"
-          />
-          <input
-            type="number"
-            placeholder=" Entre le groupe quantite du Donneur"
-          />
-          <button>Ajouter</button>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Ajouter</button>
         </form>
+
+        {% if form.errors %}
+          <div style="color:red; margin-bottom: 10px;">
+            <ul>
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                {% endfor %}
+              {% endfor %}
+              {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <h5>Liste des Donneurs</h5>
+        <form action="" method="get">
+          <input type="text" name="search" placeholder="Rechercher un Donneur" />
+          <button type="submit">Rechercher</button>
+
       </div>
       <div class="table">
         <table>

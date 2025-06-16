@@ -227,3 +227,76 @@ td {
 .login button{
   width: 100%;
 }
+/* Section globale en ligne */
+section.receveur {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+  gap: 30px;
+}
+
+/* Formulaire à gauche */
+.form {
+  flex: 1;
+  max-width: 400px;
+  background-color: #fff5f5;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form h5 {
+  font-size: 20px;
+  color: #e63946;
+  margin-bottom: 20px;
+}
+
+.form form input,
+.form form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form form button {
+  background-color: #e63946;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+/* Tableau à droite */
+.table {
+  flex: 2;
+  overflow-x: auto;
+  background-color: #fceeee;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+}
+
+.table th {
+  background-color: #ffe3e3;
+  font-weight: bold;
+}
+
+.table a {
+  color: blue;
+  text-decoration: underline;
+}
