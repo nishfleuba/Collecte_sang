@@ -7,6 +7,7 @@ urlpatterns = [
     path('donneur/', views.donneur, name='donneur'),
     path('login/', views.login, name='login'),
     path('receveur/',views.receveur,name='receveur'),
+    path('logout/', views.logout_view, name='logout'),
   
 
 

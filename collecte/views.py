@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from .models import Centre_Collecte,Donneur,Receveur
 from django.contrib.auth import authenticate,login as auth_log
 from .forms import loginForm ,DonneurForm,ReceveurForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
 
 
 def index(request):
@@ -18,14 +21,14 @@ def index(request):
 
     
 
-
+@login_required(login_url='/login/')
 def centreCollecte(request):
     centres=Centre_Collecte.objects.all()
     user=request.user
     return render(request,'centreCollecte.html', locals())
 
 
-
+@login_required(login_url='/login/')
 def donneur(request):
     if request.method == 'POST':
         form = DonneurForm(request.POST)
@@ -42,6 +45,21 @@ def donneur(request):
         donneurs = Donneur.objects.all()
     
     return render(request, 'Donneur.html', {'form': form, 'donneurs': donneurs,'search':query})
+
+
+@login_required(login_url='/login/')
+def receveur(request):
+    if request.method == 'POST':
+        form = ReceveurForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('receveur')  
+    else:
+         form = ReceveurForm()
+    receveurs= Receveur.objects.all()
+    user=request.user
+    return render(request,'receveur.html',{'form': form, 'receveurs': receveurs,})
+
     
 def login(request):
     connection_form = loginForm()
@@ -61,16 +79,7 @@ def login(request):
 
     return render(request, 'login.html', {'connection_form': connection_form, 'erreur': erreur})
 
-def receveur(request):
-    if request.method == 'POST':
-        form = ReceveurForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('receveur')  
-    else:
-         form = ReceveurForm()
-    receveurs= Receveur.objects.all()
-    user=request.user
-    return render(request,'receveur.html',{'form': form, 'receveurs': receveurs,})
-
-
+@login_required(login_url='/login/')
+def logout_view(request):
+    logout(request)
+    return redirect('index')

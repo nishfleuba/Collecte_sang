@@ -7,6 +7,7 @@
     <title>collecte sang</title>
 </head>
 <body>
+
     <header>
         <div class="logo">
           <img src="{% static 'images/IMG-20240505-WA0024.jpg' %}" alt="" />
@@ -14,26 +15,31 @@
         <div>
           <nav>
             <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="{% url 'centreCollecte' %}">Centre collecte</a>
-            </li>
-              <li>
-                <a href="/collecte/donneur">Donneur</a>
-              </li>
-              <li>
-                <a href="{% url 'receveur' %}">Receveur</a>
-              </li>
-              <li>
-                <a href="/collecte/login">Log in</a>
-              </li>
+
+                {% if user.is_authenticated %}
+                      <li>
+                      <a href="/">Home</a>
+                    </li>
+                    {% comment %} <li>
+                      <a href="{% url 'centreCollecte' %}">Centre collecte</a>
+                    </li> {% endcomment %}
+                    <li>
+                      <a href="/collecte/donneur">Donneur</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'receveur' %}">Receveur</a>
+                    </li> 
+                          
+                    <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+                   
+                {% else %}
+                    <li><a href="{% url 'login' %}">Se connecter</a></li>
+                {% endif %} 
             </ul>
           </nav>
         </div>
       </header>
-     
-      
+  
+
 </body>
 </html>
